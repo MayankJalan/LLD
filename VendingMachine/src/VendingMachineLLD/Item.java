@@ -4,7 +4,7 @@ public class Item {
     ItemType itemType;
     int price;
 
-    public ItemType getItemType() {
+    public ItemType getType() {
         return itemType;
     }
 

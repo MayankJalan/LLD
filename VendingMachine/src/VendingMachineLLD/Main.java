@@ -1,15 +1,12 @@
 package VendingMachineLLD;
 
 import VendingMachineLLD.VendingStates.State;
+import VendingMachineLLD.VendingStates.impl.HasMoneyState;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-
         VendingMachine vendingMachine = new VendingMachine();
         try {
-
             System.out.println("|");
             System.out.println("filling up the inventory");
             System.out.println("|");
@@ -18,66 +15,66 @@ public class Main {
             displayInventory(vendingMachine);
 
             System.out.println("|");
-            System.out.println("clicking on InsertCoinButton");
+            System.out.println("clicking on InsertVCoin Button");
             System.out.println("|");
 
-            State vendingState = vendingMachine.getVendingMachineState();
+            State vendingState= vendingMachine.getVendingMachineState();
             vendingState.clickOnInsertCoinButton(vendingMachine);
 
-            vendingState = vendingMachine.getVendingMachineState();
-            vendingState.insertCoin(vendingMachine, Coin.TEN);
-            vendingState.insertCoin(vendingMachine, Coin.TEN);
-            // vendingState.insertCoin(vendingMachine, Coin.NICKEL);
+            vendingState=vendingMachine.getVendingMachineState();
+            vendingState.insertCoin(vendingMachine,Coin.TEN);
+            vendingState.insertCoin(vendingMachine,Coin.TEN);
 
             System.out.println("|");
             System.out.println("clicking on ProductSelectionButton");
             System.out.println("|");
+
             vendingState.clickOnProductSelectionButton(vendingMachine);
-
-            vendingState = vendingMachine.getVendingMachineState();
-            vendingState.chooseProduct(vendingMachine, 102);
+            vendingState=vendingMachine.getVendingMachineState();
+            vendingState.chooseProduct(vendingMachine,102);
 
             displayInventory(vendingMachine);
 
-        }
-        catch (Exception e){
-            displayInventory(vendingMachine);
-        }
 
 
+
+
+
+
+
+        } catch (Exception ex) {
+
+        }
     }
 
-    private static void fillUpInventory(VendingMachine vendingMachine){
+    private static void displayInventory(VendingMachine vendingMachine) {
+        for (ItemShelf itemShelf : vendingMachine.getInventory().getInventory()) {
+            System.out.println("CodeNumber: " + itemShelf.getCode() +
+                    " Item: " + itemShelf.getItem().getType().name() +
+                    " Price: " + itemShelf.getItem().getPrice() +
+                    " isAvailable: " + !itemShelf.isSoldOut());
+        }
+    }
+
+    private static void fillUpInventory(VendingMachine vendingMachine) {
         ItemShelf[] slots = vendingMachine.getInventory().getInventory();
         for (int i = 0; i < slots.length; i++) {
             Item newItem = new Item();
-            if(i >=0 && i<3) {
+            if (i < 3) {
                 newItem.setItemType(ItemType.COKE);
-                newItem.setPrice(12);
-            }else if(i >=3 && i<5){
-                newItem.setItemType(ItemType.PEPSI);
-                newItem.setPrice(9);
-            }else if(i >=5 && i<7){
+                newItem.setPrice(15);
+            } else if (i >= 3 && i < 5) {
                 newItem.setItemType(ItemType.JUICE);
-                newItem.setPrice(13);
-            }else if(i >=7 && i<10){
+                newItem.setPrice(12);
+            } else if (i >= 6 && i < 8) {
+                newItem.setItemType(ItemType.PEPSI);
+                newItem.setPrice(15);
+            } else {
                 newItem.setItemType(ItemType.SODA);
-                newItem.setPrice(7);
+                newItem.setPrice(10);
             }
             slots[i].setItem(newItem);
             slots[i].setSoldOut(false);
-        }
-    }
-
-    private static void displayInventory(VendingMachine vendingMachine){
-
-        ItemShelf[] slots = vendingMachine.getInventory().getInventory();
-        for (ItemShelf slot : slots) {
-
-            System.out.println("CodeNumber: " + slot.getCode() +
-                    " Item: " + slot.getItem().getItemType().name() +
-                    " Price: " + slot.getItem().getPrice() +
-                    " isAvailable: " + !slot.isSoldOut());
         }
 
 
