@@ -1,0 +1,5 @@
+public enum ProductType {
+    DECORATIVE_GOODS, FURNITURE_GOODS,
+    ELECTRONIC,
+    COSMETICS;
+}

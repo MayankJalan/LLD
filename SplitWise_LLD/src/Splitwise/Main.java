@@ -4,7 +4,8 @@ package Splitwise;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Splitwise splitwise=new Splitwise();
+        Splitwise splitwise = new Splitwise();
         splitwise.demo();
+
     }
 }
