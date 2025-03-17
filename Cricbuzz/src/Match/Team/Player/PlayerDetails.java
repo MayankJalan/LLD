@@ -3,7 +3,6 @@ package Match.Team.Player;
 import Match.Team.Player.Score.BattingScoreCard;
 import Match.Team.Player.Score.BowlingScoreCard;
 
-import java.security.PublicKey;
 
 public class PlayerDetails {
     public Person person;

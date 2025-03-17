@@ -26,7 +26,4 @@ public abstract class ATMState {
     public void exit(ATM atm){
         System.out.println("OOPS!! Something went wrong");
     }
-
-
-
 }

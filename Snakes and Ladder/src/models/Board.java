@@ -22,7 +22,7 @@ public class Board {
             numberOfSnakes--;
         }
 
-        while(numberOfSnakes>0){
+        while(numberOfLadders>0){
             int start= ThreadLocalRandom.current().nextInt(1, cells.length*cells.length-1);
             int end=ThreadLocalRandom.current().nextInt(1,cells.length*cells.length-1);
             if(end<=start){
@@ -31,7 +31,7 @@ public class Board {
             Jump jump=new Jump(start,end);
             Cell cell=getCell(start);
             cell.jump=jump;
-            numberOfSnakes--;
+            numberOfLadders--;
         }
     }
 
