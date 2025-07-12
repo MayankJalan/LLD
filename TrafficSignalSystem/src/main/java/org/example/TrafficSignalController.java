@@ -55,6 +55,11 @@ public class TrafficSignalController {
                         // Set current road to RED
                         trafficLight.changeSignal(Signal.RED);
                         System.out.println("Road " + road.getId() + " RED");
+                        try {
+                            Thread.sleep(trafficLight.getRedDuration());  // Wait for yellow duration
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
                         // Wait a bit before switching to the next road
                         try {
